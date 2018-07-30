@@ -65,6 +65,10 @@ class BurgerBuilder extends Component {
         this.setState({purchasing: true});
     }
 
+    backdropClickedHandler = () => {
+        this.setState({purchasing: false});
+    }
+
     updatePurchase(ingredients) {
         var sum = Object.keys(ingredients).map((igKey) => {
             return ingredients[igKey];
@@ -90,7 +94,11 @@ class BurgerBuilder extends Component {
 
         return (
             <Aux>
-                <Modal show={this.state.purchasing}><OrderSummary ingredients={this.state.ingredients}/></Modal>
+                <Modal 
+                    show={this.state.purchasing} 
+                    backdropClicked={this.backdropClickedHandler}>
+                    <OrderSummary ingredients={this.state.ingredients}/>
+                </Modal>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls 
                     add={this.addHandler} 
@@ -98,7 +106,8 @@ class BurgerBuilder extends Component {
                     disabled={disabledIng}
                     price={this.state.totalPrice}
                     purchase={this.state.purchase}
-                    onPurchase={this.purchaseHandler}/>
+                    onPurchase={this.purchaseHandler}
+                    />
             </Aux>
         );
     }
