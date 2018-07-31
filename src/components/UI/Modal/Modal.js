@@ -9,7 +9,7 @@ const modal = (props) => {
             <Backdrop show={props.show} clicked={props.backdropClicked}/>
             <div 
                 className={classes.Modal}
-                style={props.show ? {transform: 'translateY(0)', opacity: 1} : {transfrom: 'translateY(-100vh)', opacity: 0}}
+                style={props.show ? {display: ''} : {display: 'none'}}
                 >
                 {props.children}
             </div>
