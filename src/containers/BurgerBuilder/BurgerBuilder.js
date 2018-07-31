@@ -69,6 +69,10 @@ class BurgerBuilder extends Component {
         this.setState({purchasing: false});
     }
 
+    continueHandler = () => {
+        alert('You click continue');
+    }
+
     updatePurchase(ingredients) {
         var sum = Object.keys(ingredients).map((igKey) => {
             return ingredients[igKey];
@@ -97,7 +101,10 @@ class BurgerBuilder extends Component {
                 <Modal 
                     show={this.state.purchasing} 
                     backdropClicked={this.backdropClickedHandler}>
-                    <OrderSummary ingredients={this.state.ingredients}/>
+                    <OrderSummary 
+                        ingredients={this.state.ingredients}
+                        cancel={this.backdropClickedHandler}
+                        continue={this.continueHandler}/>
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls 
