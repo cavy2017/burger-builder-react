@@ -20,3 +20,14 @@
 .Logo {
     height: 100%;
 }
+
+@media (max-width: 499px) {
+    .DesktopOnly {
+        display: none;
+    }
+}
+
+.MenuButton {
+    background-color: #40A4C8;
+    color: white;
+}
